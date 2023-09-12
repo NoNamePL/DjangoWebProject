@@ -194,7 +194,7 @@ def registration(request):
 def newpost(request):
     """Renders the newpost page."""
     assert isinstance(request, HttpRequest)
-
+    # print(request.user.has_perm('app.add_blog'))
     if request.method == "POST":
         blogform = BlogForm(request.POST, request.FILES)
         if blogform.is_valid():
