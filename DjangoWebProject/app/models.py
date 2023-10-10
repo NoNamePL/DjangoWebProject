@@ -50,7 +50,8 @@ class Comment(models.Model):
 admin.site.register(Comment)
 
 class CatalogItem(models.Model):
-    title = models.TextField(verbose_name= "Название курса")
+    title = models.TextField(unique_for_date = "Catalogdate",verbose_name= "Название курса")
+    Catalogdate = models.DateTimeField(default = datetime.now(), db_index = True, verbose_name = "Дата создания")
     description = models.TextField(verbose_name = "Краткое содержание")
     image = models.FileField(default = 'temp.jpg', verbose_name = "Путь к картинке")
     # Методы класса:
@@ -61,7 +62,7 @@ class CatalogItem(models.Model):
     # Метаданные:
     class Meta:
         db_table = "CatalogItems"
-        ordering = ["-posted"]
+        ordering = ["-Catalogdate"]
         verbose_name = "Элемент каталога"
         verbose_name_plural = "Элемент каталога"
 
