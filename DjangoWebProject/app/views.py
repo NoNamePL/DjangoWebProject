@@ -26,14 +26,18 @@ def home(request):
         }
     )
 
-def links(request):
-    """Renders the links page."""
+def catalog(request):
+    """Renders the catalog page."""
+
+    posts = Blog.objects.all()
+
     assert isinstance(request, HttpRequest)
     return render(
         request,
-        'app/links.html',
+        'app/catalog.html',
         {
-            'title':'Полезные ресурсы',
+            'title':'Каталог',
+            'posts':posts,
             'year':datetime.now().year,
         }
     )

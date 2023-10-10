@@ -14,7 +14,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('links/', views.links, name='links'),
+    path('catalog/', views.catalog, name='catalog'),
     path('contact/', views.contact, name='contact'),
     path('about/', views.about, name='about'),
     path('feedback/', views.feedback, name='feedback'),
