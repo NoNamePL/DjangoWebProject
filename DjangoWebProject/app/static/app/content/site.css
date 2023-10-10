@@ -167,6 +167,10 @@ footer a {
     background-color: transparent;
 }
 
+.backet{
+    background-image: url("backet.png");
+}
+
 /* Carousel styles */
 .carousel-inner > .item > img, .carousel-inner > .item > a > img {
     height: 600px;

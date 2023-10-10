@@ -215,3 +215,15 @@ def newpost(request):
             'year': datetime.now().year,
         }
     )
+
+def backet(request):
+    """Renders the links page."""
+    assert isinstance(request, HttpRequest)
+    return render(
+        request,
+        'app/backet.html',
+        {
+            'title':'Корзина',
+            'year':datetime.now().year,
+        }
+    )
