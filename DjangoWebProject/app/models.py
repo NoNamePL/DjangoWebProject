@@ -35,7 +35,7 @@ admin.site.register(Blog)
 class Comment(models.Model):
     text = models.TextField(verbose_name = "Текст комментарий")
     date = models.DateTimeField(default = datetime.now(), db_index = True, verbose_name = "Дата комментария")
-    author = models.ForeignKey(User, on_delete = models.CASCADE, verbose_name = "Авторк Комментария")
+    author = models.ForeignKey(User, on_delete = models.CASCADE, verbose_name = "Автор Комментария")
     post = models.ForeignKey(Blog, on_delete = models.CASCADE, verbose_name = "Статья комментария")
     # Методы класса:
     def __str__(self):
@@ -48,3 +48,21 @@ class Comment(models.Model):
         verbose_name_plural = "Комментарии к статье блога"
 
 admin.site.register(Comment)
+
+class CatalogItem(models.Model):
+    title = models.TextField(verbose_name= "Название курса")
+    description = models.TextField(verbose_name = "Краткое содержание")
+    image = models.FileField(default = 'temp.jpg', verbose_name = "Путь к картинке")
+    # Методы класса:
+    def get_absolute_url(self):
+        return reverse("catalogitem", args=[str(self.id)])
+    def __str__(self):
+        return self.title
+    # Метаданные:
+    class Meta:
+        db_table = "CatalogItems"
+        ordering = ["-posted"]
+        verbose_name = "Элемент каталога"
+        verbose_name_plural = "Элемент каталога"
+
+admin.site.register(CatalogItem)

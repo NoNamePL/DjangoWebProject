@@ -5,6 +5,7 @@ Definition of forms.
 from django.db import models
 from.models import Comment
 from.models import Blog
+from.models import CatalogItem
 
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
@@ -45,3 +46,14 @@ class BlogForm(forms.ModelForm):
             'content': "Полное содержание",
             'image': "Картинка"
         }
+
+class CatalogForm(forms.ModelForm):
+    class Meta:
+        model = CatalogItem
+        fields = {'title','description','image'}
+        labels = {
+            'title':"Заголовок",
+            'description':"Краткое содержание",
+            'immage':"Картинка"
+        }
+        

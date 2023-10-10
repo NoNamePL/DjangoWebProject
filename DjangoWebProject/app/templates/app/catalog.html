@@ -15,7 +15,9 @@
             <p class="posts__item-body-description">{{ post.description }}</p>
         </div>
         <a class="posts__item-body-open" href="{% url 'blogpost' parametr=post.id %}">ЧИТАТЬ ДАЛЕЕ</a>
+    
     </div>
+    
     {% endfor %}
 </div>
 
