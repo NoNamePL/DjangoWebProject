@@ -43,6 +43,37 @@ def catalog(request):
         }
     )
 
+def ItemOfCatalog(request, parametr):
+    """Renders the ItemOfCatalog page."""
+    assert isinstance(request, HttpRequest)
+    item_1 = CatalogItem.objects.get(id=parametr)
+
+    # if request.method == "POST":
+    #     form = CommentForm(request.POST)
+    #     if form.is_valid():
+    #         comment_f = form.save(commit=False)
+    #         comment_f.author = request.user
+    #         comment_f.date = datetime.now()
+    #         comment_f.post = Blog.objects.get(id=parametr)
+    #         comment_f.save()
+    #         return redirect('blogpost', parametr=post_1.id)
+    # else:
+    #     form = CommentForm()
+
+    return render(
+        request,
+        'app/catalogItem.html',
+        {
+            'item_1': item_1,
+            # 'comments': comments,
+            # 'form': form,
+            'year': datetime.now().year,
+        }
+    )
+
+
+
+
 def contact(request):
     """Renders the contact page."""
     assert isinstance(request, HttpRequest)
