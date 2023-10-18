@@ -13,6 +13,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 from.models import Blog
 from.models import Comment
+from.models import CatalogItem
 
 def home(request):
     """Renders the home page."""
@@ -29,7 +30,7 @@ def home(request):
 def catalog(request):
     """Renders the catalog page."""
 
-    posts = Blog.objects.all()
+    items = CatalogItem.objects.all()
 
     assert isinstance(request, HttpRequest)
     return render(
@@ -37,7 +38,7 @@ def catalog(request):
         'app/catalog.html',
         {
             'title':'Каталог',
-            'posts':posts,
+            'CatalogItems':items,
             'year':datetime.now().year,
         }
     )
