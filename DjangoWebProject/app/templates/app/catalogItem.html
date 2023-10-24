@@ -8,10 +8,20 @@
     <h2 class="blogpost-title">{{ item_1.title }}</h2>
 
     <p class="blogpost-content">{{item_1.description|linebreaksbr}}</p>
+    <p style="font-size:26px;" class="blogpost-content">Стоимость круса: {{item_1.cost|linebreaksbr}}</p>
+    {% if user.is_authenticated %}
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            {{form.as_p}}
+            <button type="submit" class="blogpost-return">Приобрести</button>
+        </div>
+    </form>
+        {% comment %} <a class="blogpost-return" href="{% url 'catalog' %}">Приобрести</a> {% endcomment %}
+    {% else %}
+    <h3 class="blogpost-comment-title">Для добавления курса в корзину, пожалуйста, авторизуйтесь</h3>
+    {% endif %}
 
-    
-
-    <a class="blogpost-return" href="{% url 'catalog' %}">Приобрести</a>
 </div>
 
 <style>

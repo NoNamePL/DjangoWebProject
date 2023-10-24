@@ -6,6 +6,7 @@ from django.db import models
 from.models import Comment
 from.models import Blog
 from.models import CatalogItem
+from.models import Backet
 
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
@@ -50,10 +51,17 @@ class BlogForm(forms.ModelForm):
 class CatalogForm(forms.ModelForm):
     class Meta:
         model = CatalogItem
-        fields = {'title','description','image'}
+        fields = {'title','description','image','cost'}
         labels = {
             'title':"Заголовок",
             'description':"Краткое содержание",
-            'immage':"Картинка"
+            'image':"Картинка"
         }
+
+class BacketForm(forms.ModelForm):
+    class Meta:
+        model = Backet
+        fields = {'text',}
+        labels = {'text':"Краткое описание курса"}
+
         

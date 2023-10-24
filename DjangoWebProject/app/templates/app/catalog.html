@@ -13,8 +13,9 @@
             <h2 class="posts__item-body-title">{{ item.title }}</h2>
             <h4 class="posts__item-body-posted">{{ item.Catalogdate }}</h4>
             <p class="posts__item-body-description">{{ item.description }}</p>
+            <p style="font-size:20px;" class="posts__item-body-description">Стоимость курса: {{ item.cost }}</p>
         </div>
-        <a class="posts__item-body-open" href="{% url 'CatalogItems' parametr=item.id %}">ЧИТАТЬ ДАЛЕЕ</a>
+        <a class="posts__item-body-open" href="{% url 'ItemofCatalog' parametr=item.id %}">ЧИТАТЬ ДАЛЕЕ</a>
     
     </div>
     

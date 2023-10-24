@@ -54,6 +54,7 @@ class CatalogItem(models.Model):
     Catalogdate = models.DateTimeField(default = datetime.now(), db_index = True, verbose_name = "Дата создания")
     description = models.TextField(verbose_name = "Краткое содержание")
     image = models.FileField(default = 'temp.jpg', verbose_name = "Путь к картинке")
+    cost = models.IntegerField(default='5000',verbose_name="Стоимость курса")
     # Методы класса:
     def get_absolute_url(self):
         return reverse("catalogitem", args=[str(self.id)])
@@ -67,3 +68,22 @@ class CatalogItem(models.Model):
         verbose_name_plural = "Элемент каталога"
 
 admin.site.register(CatalogItem)
+
+class Backet(models.Model):
+    text = models.TextField(verbose_name = "Текст комментарий")
+    date = models.DateTimeField(default = datetime.now(), db_index = True, verbose_name = "Дата добавления в корзину")
+    # cost = models.PositiveIntegerField(default='5000',verbose_name="Стоимость курса",)
+    course = models.ForeignKey(CatalogItem,on_delete=models.CASCADE,verbose_name="Курс")
+    # author = models.ForeignKey(User, on_delete = models.CASCADE, verbose_name = "Автор Комментария")
+    # post = models.ForeignKey(Blog, on_delete = models.CASCADE, verbose_name = "Статья комментария")
+    # Методы класса:
+    def __str__(self):
+        return 'Корзина %d к %s' % (self.id, self.course)
+    # Метаданные:
+    class Meta:
+        db_table = "Backet"
+        ordering = ["-date"]
+        verbose_name = "Корзина"
+        verbose_name_plural = "Корзина"
+
+admin.site.register(Backet)
