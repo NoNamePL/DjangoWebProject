@@ -3,6 +3,12 @@
 {% block content %}
 
 <h2>{{ title }}</h2>
-
+<br />
+<div class="posts">
+    {% for item in Backet %}
+    <div class="posts_item-body">
+        <h2 class="posts_item-body-title">{{item.}}</h2>
+    </div>
+</div>
 
 {% endblock %}

@@ -56,6 +56,7 @@ class CatalogItem(models.Model):
     image = models.FileField(default = 'temp.jpg', verbose_name = "Путь к картинке")
     cost = models.IntegerField(default='5000',verbose_name="Стоимость курса")
     # Методы класса:
+    
     def get_absolute_url(self):
         return reverse("catalogitem", args=[str(self.id)])
     def __str__(self):
@@ -70,6 +71,7 @@ class CatalogItem(models.Model):
 admin.site.register(CatalogItem)
 
 class Backet(models.Model):
+    title = models.TextField(unique_for_date = "date",verbose_name= "Название курса")
     text = models.TextField(verbose_name = "Текст комментарий")
     date = models.DateTimeField(default = datetime.now(), db_index = True, verbose_name = "Дата добавления в корзину")
     # cost = models.PositiveIntegerField(default='5000',verbose_name="Стоимость курса",)
