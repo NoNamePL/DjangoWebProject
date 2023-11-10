@@ -263,3 +263,15 @@ def backet(request):
             'year':datetime.now().year,
         }
     )
+
+def add_to_backet(request,CatalogItem_id):
+    Course = get_object_or_404(CatalogItem, pk=CatalogItem_id)
+
+    if request.method == 'POST' :
+        form = CatalogItem(request.Post)
+
+    if form.is_valid():
+        quantity = form.cleaned_data['quantity']
+        catalog_item, created = CatalogItem.objects.get_or_create(user=request.user, course=course)
+        catalog_item.quantity += quantity
+        catalog_item.save()
