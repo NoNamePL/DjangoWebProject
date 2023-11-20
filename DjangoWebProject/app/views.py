@@ -275,3 +275,11 @@ def add_to_backet(request,CatalogItem_id):
         catalog_item, created = CatalogItem.objects.get_or_create(user=request.user, course=course)
         catalog_item.quantity += quantity
         catalog_item.save()
+
+    return render(
+        request,
+        'app/addBacket.html',
+        {
+            
+        }
+    )
