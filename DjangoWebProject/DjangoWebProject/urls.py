@@ -39,6 +39,9 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
     path('admin/', admin.site.urls),
     path('backet/',views.backet,name='backet'),
+    path('backet/add/<int:CatalogItem_id>',views.add_to_backet,name='backet'),
+    # path('backet/update/<int:CatalogItem_id>',views.backet,name='backet'),
+    # path('backet/remove/<int:CatalogItem_id>',views.backet,name='backet'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += staticfiles_urlpatterns()

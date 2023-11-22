@@ -14,6 +14,7 @@ from django.contrib.auth.forms import UserCreationForm
 from.models import Blog
 from.models import Comment
 from.models import CatalogItem
+# form.models import Backet
 
 def home(request):
     """Renders the home page."""

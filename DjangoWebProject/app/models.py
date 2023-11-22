@@ -71,13 +71,15 @@ class CatalogItem(models.Model):
 admin.site.register(CatalogItem)
 
 class Backet(models.Model):
-    id = models.Index()
-    title = models.TextField(unique_for_date = "date",verbose_name= "Название курса")
-    text = models.TextField(verbose_name = "Текст комментарий")
+    # id = models.Index()
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    # title = models.TextField(unique_for_date = "date",verbose_name= "Название курса")
+    # text = models.TextField(verbose_name = "Текст комментарий")
+    course = models.ForeignKey(CatalogItem,on_delete=models.CASCADE,verbose_name="Курс")
     date = models.DateTimeField(default = datetime.now(), db_index = True, verbose_name = "Дата добавления в корзину")
     quantity = models.PositiveIntegerField(default=1)
     # cost = models.PositiveIntegerField(default='5000',verbose_name="Стоимость курса",)
-    course = models.ForeignKey(CatalogItem,on_delete=models.CASCADE,verbose_name="Курс")
+    
     # author = models.ForeignKey(User, on_delete = models.CASCADE, verbose_name = "Автор Комментария")
     # post = models.ForeignKey(Blog, on_delete = models.CASCADE, verbose_name = "Статья комментария")
     # Методы класса:
