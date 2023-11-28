@@ -71,24 +71,24 @@ class CatalogItem(models.Model):
 admin.site.register(CatalogItem)
 
 class Backet(models.Model):
-    # id = models.Index()
+    id = models.AutoField(primary_key=True,db_index=True,)
+    # user = models.TextField(default=User)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     # title = models.TextField(unique_for_date = "date",verbose_name= "Название курса")
     # text = models.TextField(verbose_name = "Текст комментарий")
-    course = models.ForeignKey(CatalogItem,on_delete=models.CASCADE,verbose_name="Курс")
+    # course = models.ForeignKey(CatalogItem,on_delete=models.CASCADE,verbose_name="Курс")
     date = models.DateTimeField(default = datetime.now(), db_index = True, verbose_name = "Дата добавления в корзину")
     quantity = models.PositiveIntegerField(default=1)
     # cost = models.PositiveIntegerField(default='5000',verbose_name="Стоимость курса",)
-    
     # author = models.ForeignKey(User, on_delete = models.CASCADE, verbose_name = "Автор Комментария")
     # post = models.ForeignKey(Blog, on_delete = models.CASCADE, verbose_name = "Статья комментария")
     # Методы класса:
     def __str__(self):
-        return 'Корзина %d к %s' % (self.id, self.course)
+        return 'Корзина %s' % (self.course)
     # Метаданные:
     class Meta:
         db_table = "Backet"
-        ordering = ["-date"]
+        ordering = ["-id"]
         verbose_name = "Корзина"
         verbose_name_plural = "Корзина"
 

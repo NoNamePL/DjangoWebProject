@@ -61,7 +61,9 @@ class CatalogForm(forms.ModelForm):
 class BacketForm(forms.ModelForm):
     class Meta:
         model = Backet
-        fields = {'text',}
-        labels = {'text':"Краткое описание курса"}
+        fields = {}
+        labels = {}
+        # fields = {'text',}
+        # labels = {'text':"Краткое описание курса"}
 
         

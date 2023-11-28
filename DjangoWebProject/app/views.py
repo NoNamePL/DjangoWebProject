@@ -14,7 +14,7 @@ from django.contrib.auth.forms import UserCreationForm
 from.models import Blog
 from.models import Comment
 from.models import CatalogItem
-# form.models import Backet
+# from.models import Backet
 
 def home(request):
     """Renders the home page."""
@@ -272,7 +272,7 @@ def add_to_backet(request,CatalogItem_id):
         form = CatalogItem(request.Post)
 
     if form.is_valid():
-        quantity = form.cleaned_data['quantity']
+        quantity = form.cleaned_data['date']
         catalog_item, created = CatalogItem.objects.get_or_create(user=request.user, course=course)
         catalog_item.quantity += quantity
         catalog_item.save()
